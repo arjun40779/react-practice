@@ -15,6 +15,13 @@ const apps = [
     description: "Capture tasks, track progress, and stay organized.",
     action: "Open todo list",
   },
+  {
+    href: "/tabs",
+    icon: "↔",
+    name: "Tabs",
+    description: "Switch between related sections with accessible controls.",
+    action: "Open tabs",
+  },
 ];
 
 const HomePage = () => (

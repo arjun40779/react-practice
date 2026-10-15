@@ -3,6 +3,7 @@ import TodoPage from "./pages/todo";
 import CounterPage from "./pages/counter";
 import HomePage from "./pages/home";
 import AccordionPage from "./pages/Accordion";
+import TabsPage from "./pages/TabsPage";
 
 export const routes = [
   {
@@ -28,6 +29,11 @@ export const routes = [
         path: "/accordion",
         element: <AccordionPage />,
         errorElement: <div>Counter Error</div>,
+      },
+      {
+        path: "/tabs",
+        element: <TabsPage />,
+        errorElement: <div>Tabs Error</div>,
       },
       {
         path: "*",

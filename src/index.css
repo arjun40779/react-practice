@@ -292,6 +292,106 @@ input:focus-visible {
   place-items: center;
 }
 
+.tabs-page {
+  display: grid;
+  min-height: 100vh;
+  padding: 64px 24px;
+  place-items: center;
+}
+
+.tabs-card {
+  width: min(100%, 760px);
+  padding: 40px;
+  border: 1px solid rgb(232 236 232 / 90%);
+  border-radius: 24px;
+  background: var(--color-surface);
+  box-shadow: 0 24px 70px rgb(36 51 40 / 8%);
+}
+
+.tabs-header {
+  margin: 34px 0 30px;
+}
+
+.tabs-header h1 {
+  max-width: 600px;
+  margin: 0;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.08;
+}
+
+.tabs-header .todo-description {
+  max-width: 520px;
+  font-size: 0.96rem;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tabs-trigger {
+  position: relative;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.tabs-trigger:hover {
+  background: #f7f9f7;
+  color: var(--color-accent-dark);
+}
+
+.tabs-trigger[aria-selected="true"] {
+  color: var(--color-accent-dark);
+}
+
+.tabs-trigger[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--color-accent);
+  content: "";
+}
+
+.tabs-panel {
+  min-height: 176px;
+  padding: 28px 8px 16px;
+  color: #68736b;
+  line-height: 1.7;
+}
+
+.tabs-panel h2 {
+  margin: 0 0 10px;
+  color: var(--color-ink);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.tabs-panel p {
+  max-width: 560px;
+  margin: 0;
+}
+
+.tabs-footnote {
+  margin: 12px 0 0;
+  color: #929c93;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
 .home-content {
   width: min(100%, 760px);
 }
@@ -511,8 +611,22 @@ input:focus-visible {
 
 @media (max-width: 560px) {
   .home-page,
-  .counter-page {
+  .counter-page,
+  .tabs-page {
     padding: 28px 16px;
+  }
+
+  .tabs-card {
+    padding: 26px 20px;
+    border-radius: 20px;
+  }
+
+  .tabs-header {
+    margin: 28px 0 24px;
+  }
+
+  .tabs-trigger {
+    padding: 0 14px;
   }
 
   .home-header {
