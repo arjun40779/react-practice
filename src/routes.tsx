@@ -1,5 +1,8 @@
 import { Outlet } from "react-router";
 import TodoPage from "./pages/todo";
+import CounterPage from "./pages/counter";
+import HomePage from "./pages/home";
+import AccordionPage from "./pages/Accordion";
 
 export const routes = [
   {
@@ -8,13 +11,23 @@ export const routes = [
     children: [
       {
         index: true,
-        element: <div>Home</div>,
+        element: <HomePage />,
         errorElement: <div>Home Error</div>,
       },
       {
         path: "/todo",
         element: <TodoPage />,
         errorElement: <div>Todo Error</div>,
+      },
+      {
+        path: "/counter",
+        element: <CounterPage />,
+        errorElement: <div>Counter Error</div>,
+      },
+      {
+        path: "/accordion",
+        element: <AccordionPage />,
+        errorElement: <div>Counter Error</div>,
       },
       {
         path: "*",

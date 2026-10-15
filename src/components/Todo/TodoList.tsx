@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useTodoContext } from "../../context/TodoContext";
+import { removeTodo } from "../../features/todos/todosSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import EditTodo from "./EditTodo";
 
 const TodoList = () => {
-  const { todos, removeTodo } = useTodoContext();
+  const dispatch = useAppDispatch();
+  const todos = useAppSelector((state) => state.todos);
   const [editId, setEditId] = useState<number | null>(null);
 
   if (todos.length === 0) {
@@ -44,7 +46,7 @@ const TodoList = () => {
             <button
               className="button button-quiet button-danger"
               type="button"
-              onClick={() => removeTodo(todo.id)}
+              onClick={() => dispatch(removeTodo(todo.id))}
               aria-label={`Remove ${todo.text}`}
             >
               Remove

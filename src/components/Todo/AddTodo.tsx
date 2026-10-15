@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useTodoContext } from "../../context/TodoContext";
+import { addTodo } from "../../features/todos/todosSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 const AddTodo = () => {
   const [inputValue, setInputValue] = useState("");
-  const { addNewTodo } = useTodoContext();
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -12,11 +13,13 @@ const AddTodo = () => {
     e.preventDefault();
     if (inputValue.trim() === "") return;
 
-    addNewTodo({
-      id: Date.now(),
-      text: inputValue.trim(),
-      completed: false,
-    });
+    dispatch(
+      addTodo({
+        id: Date.now(),
+        text: inputValue.trim(),
+        completed: false,
+      }),
+    );
     setInputValue("");
   };
 

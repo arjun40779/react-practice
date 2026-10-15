@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useTodoContext } from "../../context/TodoContext";
+import { updateTodo } from "../../features/todos/todosSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const EditTodo = ({
   id,
@@ -8,18 +9,22 @@ const EditTodo = ({
   id: number;
   setEditId: React.Dispatch<React.SetStateAction<number | null>>;
 }) => {
-  const { todos, updateTodo } = useTodoContext();
-  const currentTodo = todos.find((todo) => todo.id === id);
+  const dispatch = useAppDispatch();
+  const currentTodo = useAppSelector((state) =>
+    state.todos.find((todo) => todo.id === id),
+  );
   const [text, setText] = useState(currentTodo?.text ?? "");
   const [complete, setComplete] = useState(currentTodo?.completed ?? false);
 
   const handleUpdateTodo = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    updateTodo({
-      id,
-      text: text.trim(),
-      completed: complete,
-    });
+    dispatch(
+      updateTodo({
+        id,
+        text: text.trim(),
+        completed: complete,
+      }),
+    );
     setEditId(null);
   };
   return (
@@ -49,10 +54,7 @@ const EditTodo = ({
         >
           Cancel
         </button>
-        <button
-          className="button button-primary"
-          type="submit"
-        >
+        <button className="button button-primary" type="submit">
           Save changes
         </button>
       </div>
